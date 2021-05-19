@@ -1,0 +1,47 @@
+.Popup {
+  text-align: center;
+}
+
+.Popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.App-logo {
+  margin: 10px 0;
+  pointer-events: none;
+  
+}
+
+.Logo {
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 20px;
+}
+
+.Logo-sub {
+  text-align: right !important;
+  color: rgb(59,96,229);    
+  margin-top: -7px;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: smaller;
+}
+
+.Discription {
+  font-family: 'Didact Gothic', sans-serif;
+  margin: 5px 0 100px 0;
+  width: 300px;
+}
+
+.Discription-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.Discription-sub {
+  text-align: left;
+  color: rgb(124, 127, 146);
+}

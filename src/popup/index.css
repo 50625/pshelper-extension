@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 350px;
 }
 
 .App-logo {
@@ -18,7 +19,7 @@
 
 .Logo {
   font-family: 'Didact Gothic', sans-serif;
-  font-size: 20px;
+  font-size: 28px;
 }
 
 .Logo-sub {
@@ -44,4 +45,17 @@
 .Discription-sub {
   text-align: left;
   color: rgb(124, 127, 146);
+}
+
+.Swich-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.Input {
+  width: 240px;
 }

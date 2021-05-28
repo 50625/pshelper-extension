@@ -6,7 +6,6 @@
   "icons": {
     "128": "logo.png"
   },
-  "permissions": [],
   "background": {
     "scripts": [
       "background.js"
@@ -18,5 +17,9 @@
     "default_popup": "popup.html",
     "default_title": "PSHELPER"
   },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
   "options_page": "index.html"
   }

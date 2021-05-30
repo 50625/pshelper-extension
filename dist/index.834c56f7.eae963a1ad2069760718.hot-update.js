@@ -1,0 +1,15 @@
+webpackHotUpdate("index.834c56f7",{
+
+/***/ "./src/popup/index.js":
+/*!****************************!*\
+  !*** ./src/popup/index.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/myungyeonlee/pshelper-extension/src/popup/index.js: Missing semicolon. (35:10)\n\n\u001b[0m \u001b[90m 33 |\u001b[39m       })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 35 |\u001b[39m   render() {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 36 |\u001b[39m     \u001b[36mconst\u001b[39m \u001b[33mFooter\u001b[39m \u001b[33m=\u001b[39m styled\u001b[33m.\u001b[39mfooter\u001b[32m`\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 |\u001b[39m \u001b[32m      display: block;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 38 |\u001b[39m \u001b[32m      text-align: center;\u001b[39m\u001b[0m\n    at Object._raise (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:810:17)\n    at Object.raiseWithData (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:803:17)\n    at Object.raise (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:764:17)\n    at Object.semicolon (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:9937:10)\n    at Object.parseExpressionStatement (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:13098:10)\n    at Object.parseExpressionStatement (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:3032:18)\n    at Object.parseStatementContent (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:12687:19)\n    at Object.parseStatement (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:12551:17)\n    at Object.parseStatement (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:3006:24)\n    at Object.parseBlockOrModuleBlockBody (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:13140:25)\n    at Object.parseBlockBody (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:13131:10)\n    at Object.parseBlock (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:13115:10)\n    at Object.parseFunctionBody (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:12029:24)\n    at Object.parseFunctionBody (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:2978:18)\n    at Object.parseFunctionBodyAndFinish (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:12013:10)\n    at Object.parseFunctionBodyAndFinish (/Users/myungyeonlee/pshelper-extension/node_modules/@babel/parser/lib/index.js:2988:11)");
+
+/***/ })
+
+})
+//# sourceMappingURL=index.834c56f7.eae963a1ad2069760718.hot-update.js.map

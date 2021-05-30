@@ -1,15 +1,20 @@
-// // This will send the #someSelector value to popup
-// chrome.runtime.sendMessage({
-//   type: 'OYO_PLUGIN_EVALUATED_CONFIG', 
-//   configData: getDataFromDOM('#div')
-// });
+/*global chrome*/
 
-chrome.runtime.sendMessage({message: "hello"}, function(response) {
-  console.log(response.message);
-});
+chrome.extension.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    
+    // FIXME: get rid of consoles
+    if (document.getElementById('problem_description')) console.log(document.getElementById('problem_description'));
+    if (document.getElementById('problem_input')) console.log(document.getElementById('problem_input'));
+    if (document.getElementById('problem_output')) console.log(document.getElementById('problem_output'));
+    
+    if (request.text && (request.text == "getDOM")) {
+      sendResponse({ 
+        description: document.getElementById('problem_description'),
+        input: document.getElementById('problem_input'),
+        output: document.getElementById('problem_output')
+      });
+    }
+  }
+);
 
-chrome.runtime.onMessage.addListener(
-  (request, sender, sendResponse) => {
-    if (request.message === "hi")
-      sendResponse({message: "hi to you"});
-  });

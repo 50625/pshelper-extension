@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import styled from 'styled-components';
 import Switch from "../common/components/switch";
-import TrarricContainer from "../common/components/trafficContainer";
-import { getCurrentTab } from "../common/utils";
 
 class Popup extends React.Component {
   constructor(props) {
@@ -13,26 +11,27 @@ class Popup extends React.Component {
       hilightIsToggled : false,
       coreIsToggled : false,
       variableIsToggled : false,
-      traffic: {}
     };
   };
 
   setIsToggled() {
     this.setState((event) => {
-      console.log(event);
+      chrome.extension.getBackgroundPage().console.log(event);
     });
   }
 
   componentDidMount() {
-    getCurrentTab((tab) => {
-        /*global chrome*/
-        chrome.runtime.sendMessage({type: 'popupInit', tabId: tab.id}, (response) => {
-            if (response) {
-                this.setState({
-                    traffic: Object.assign(this.state.traffic, response)
-                });
-            }
-        });
+    /*global chrome*/
+    chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendMessage(tab.id, { action: "getDOM" }, function(response) {
+        if (response) {
+          chrome.extension.getBackgroundPage().console.log(response['problem_description']);
+          chrome.extension.getBackgroundPage().console.log(response['problem_input']);
+          chrome.extension.getBackgroundPage().console.log(response['problem_output']);
+        } else {
+          chrome.extension.getBackgroundPage().console.log("EMPTY");
+        }
+      });
     });
 }
   render() {

@@ -8,32 +8,63 @@ class Popup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hilightIsToggled : false,
-      coreIsToggled : false,
-      variableIsToggled : false,
+      algorithmIsToggled : false,
+      highlightIsToggled : false,
+      keywordIsToggled : false,
     };
   };
 
   setIsToggled() {
     this.setState((event) => {
       chrome.extension.getBackgroundPage().console.log(event);
+      
+    });
+  }
+
+  // FIXME: state doesn't change
+
+  setAlgorithmIsToggled(flag) {
+    this.setState(() => {
+      if (flag) this.algorithmIsToggled = false;
+      else this.algorithmIsToggled = true;
+      chrome.extension.getBackgroundPage().console.log("setAlgorithmIsToggled");
+      chrome.extension.getBackgroundPage().console.log(this.state);
+    });
+    
+    chrome.runtime.sendMessage({ action: "postAnalyzeAlgorithm"}, function(response) {
+      chrome.extension.getBackgroundPage().console.log(response);
+    });
+  }
+
+  setHighLightIsToggled(flag) {
+    this.setState(() => {
+      if (flag) this.highlightIsToggled = false;
+      else this.highlightIsToggled = true;
+      chrome.extension.getBackgroundPage().console.log("setHighLightIsToggled");
+      chrome.extension.getBackgroundPage().console.log(this.state);
+
+      chrome.runtime.sendMessage({ action: "postHighlight"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    });
+  }
+
+  setKeywordIsToggled(flag) {
+    this.setState(() => {
+      if (flag) this.coreIsToggled = false;
+      else this.coreIsToggled = true;
+      chrome.extension.getBackgroundPage().console.log("setKeywordIsToggled");
+      chrome.extension.getBackgroundPage().console.log(this.state);
+      chrome.runtime.sendMessage({ action: "postKeyword"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
     });
   }
 
   componentDidMount() {
     /*global chrome*/
-    chrome.tabs.getSelected(null, function(tab) {
-      chrome.tabs.sendMessage(tab.id, { action: "getDOM" }, function(response) {
-        if (response) {
-          chrome.extension.getBackgroundPage().console.log(response['problem_description']);
-          chrome.extension.getBackgroundPage().console.log(response['problem_input']);
-          chrome.extension.getBackgroundPage().console.log(response['problem_output']);
-        } else {
-          chrome.extension.getBackgroundPage().console.log("EMPTY");
-        }
-      });
-    });
-}
+  }
+
   render() {
     const Footer = styled.footer`
       display: block;
@@ -51,31 +82,30 @@ class Popup extends React.Component {
           </div>
           <div className="Input">
             <div className="Swich-body">
+              알고리즘 분류 확인
+              <Switch
+                id="var-switch"
+                toggled={this.state.algorithmIsToggled}
+                onChange={e => this.setAlgorithmIsToggled(this.state.algorithmIsToggled)}          
+              />
+            </div>
+            <div className="Swich-body">
               하이라이팅 기능
               <Switch
                 id="hilight-switch"
-                toggled={this.hilightIsToggled}
-                onChange={e => this.setIsToggled(e.target.checked)}          
+                toggled={this.state.highlightIsToggled}
+                onChange={e => this.setHighLightIsToggled(this.state.highlightIsToggled)}          
               />
             </div>
             <div className="Swich-body">
               핵심 단어 체크 기능
               <Switch
                 id="core-switch"
-                toggled={this.coreIsToggled}
-                onChange={e => this.setIsToggled(e.target.checked)}          
-              />
-            </div>
-            <div className="Swich-body">
-              변수 체크 기능
-              <Switch
-                id="var-switch"
-                toggled={this.variableIsToggled}
-                onChange={e => this.setIsToggled(e.target.checked)}          
+                toggled={this.state.keywordIsToggled}
+                onChange={e => this.setKeywordIsToggled(this.state.keywordIsToggled)}          
               />
             </div>
           </div>
-          {/* <TrarricContainer traffic={this.state.traffic}/> */}
           <Footer>© 2021 50625, Inc. All right reserved.</Footer>
         </div>
     </div>

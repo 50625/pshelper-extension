@@ -332,9 +332,9 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hilightIsToggled: false,
-      coreIsToggled: false,
-      variableIsToggled: false
+      algorithmIsToggled: false,
+      highlightIsToggled: false,
+      keywordIsToggled: false
     };
   }
 
@@ -342,23 +342,50 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     this.setState(event => {
       chrome.extension.getBackgroundPage().console.log(event);
     });
+  } // FIXME: state doesn't change
+
+
+  setAlgorithmIsToggled(flag) {
+    this.setState(() => {
+      if (flag) this.algorithmIsToggled = false;else this.algorithmIsToggled = true;
+      chrome.extension.getBackgroundPage().console.log("setAlgorithmIsToggled");
+      chrome.extension.getBackgroundPage().console.log(this.state);
+    });
+    chrome.runtime.sendMessage({
+      action: "postAnalyzeAlgorithm"
+    }, function (response) {
+      chrome.extension.getBackgroundPage().console.log(response);
+    });
+  }
+
+  setHighLightIsToggled(flag) {
+    this.setState(() => {
+      if (flag) this.highlightIsToggled = false;else this.highlightIsToggled = true;
+      chrome.extension.getBackgroundPage().console.log("setHighLightIsToggled");
+      chrome.extension.getBackgroundPage().console.log(this.state);
+      chrome.runtime.sendMessage({
+        action: "postHighlight"
+      }, function (response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    });
+  }
+
+  setKeywordIsToggled(flag) {
+    this.setState(() => {
+      if (flag) this.coreIsToggled = false;else this.coreIsToggled = true;
+      chrome.extension.getBackgroundPage().console.log("setKeywordIsToggled");
+      chrome.extension.getBackgroundPage().console.log(this.state);
+      chrome.runtime.sendMessage({
+        action: "postKeyword"
+      }, function (response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    });
   }
 
   componentDidMount() {
     /*global chrome*/
-    chrome.tabs.getSelected(null, function (tab) {
-      chrome.tabs.sendMessage(tab.id, {
-        action: "getDOM"
-      }, function (response) {
-        if (response) {
-          chrome.extension.getBackgroundPage().console.log(response['problem_description']);
-          chrome.extension.getBackgroundPage().console.log(response['problem_input']);
-          chrome.extension.getBackgroundPage().console.log(response['problem_output']);
-        } else {
-          chrome.extension.getBackgroundPage().console.log("EMPTY");
-        }
-      });
-    });
   }
 
   render() {
@@ -379,87 +406,87 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
             children: "PSHELPER"
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 49,
+            lineNumber: 80,
             columnNumber: 13
           }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
             className: "Logo-sub",
             children: "2021"
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 50,
+            lineNumber: 81,
             columnNumber: 13
           }, this)]
         }, void 0, true, {
           fileName: _jsxFileName,
-          lineNumber: 48,
+          lineNumber: 79,
           columnNumber: 11
         }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
           className: "Input",
           children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
             className: "Swich-body",
-            children: ["\uD558\uC774\uB77C\uC774\uD305 \uAE30\uB2A5", /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_common_components_switch__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              id: "hilight-switch",
-              toggled: this.hilightIsToggled,
-              onChange: e => this.setIsToggled(e.target.checked)
+            children: ["\uC54C\uACE0\uB9AC\uC998 \uBD84\uB958 \uD655\uC778", /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_common_components_switch__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              id: "var-switch",
+              toggled: this.state.algorithmIsToggled,
+              onChange: e => this.setAlgorithmIsToggled(this.state.algorithmIsToggled)
             }, void 0, false, {
               fileName: _jsxFileName,
-              lineNumber: 55,
+              lineNumber: 86,
               columnNumber: 15
             }, this)]
           }, void 0, true, {
             fileName: _jsxFileName,
-            lineNumber: 53,
+            lineNumber: 84,
+            columnNumber: 13
+          }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
+            className: "Swich-body",
+            children: ["\uD558\uC774\uB77C\uC774\uD305 \uAE30\uB2A5", /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_common_components_switch__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              id: "hilight-switch",
+              toggled: this.state.highlightIsToggled,
+              onChange: e => this.setHighLightIsToggled(this.state.highlightIsToggled)
+            }, void 0, false, {
+              fileName: _jsxFileName,
+              lineNumber: 94,
+              columnNumber: 15
+            }, this)]
+          }, void 0, true, {
+            fileName: _jsxFileName,
+            lineNumber: 92,
             columnNumber: 13
           }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
             className: "Swich-body",
             children: ["\uD575\uC2EC \uB2E8\uC5B4 \uCCB4\uD06C \uAE30\uB2A5", /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_common_components_switch__WEBPACK_IMPORTED_MODULE_4__["default"], {
               id: "core-switch",
-              toggled: this.coreIsToggled,
-              onChange: e => this.setIsToggled(e.target.checked)
+              toggled: this.state.keywordIsToggled,
+              onChange: e => this.setKeywordIsToggled(this.state.keywordIsToggled)
             }, void 0, false, {
               fileName: _jsxFileName,
-              lineNumber: 63,
+              lineNumber: 102,
               columnNumber: 15
             }, this)]
           }, void 0, true, {
             fileName: _jsxFileName,
-            lineNumber: 61,
-            columnNumber: 13
-          }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
-            className: "Swich-body",
-            children: ["\uBCC0\uC218 \uCCB4\uD06C \uAE30\uB2A5", /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_common_components_switch__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              id: "var-switch",
-              toggled: this.variableIsToggled,
-              onChange: e => this.setIsToggled(e.target.checked)
-            }, void 0, false, {
-              fileName: _jsxFileName,
-              lineNumber: 71,
-              columnNumber: 15
-            }, this)]
-          }, void 0, true, {
-            fileName: _jsxFileName,
-            lineNumber: 69,
+            lineNumber: 100,
             columnNumber: 13
           }, this)]
         }, void 0, true, {
           fileName: _jsxFileName,
-          lineNumber: 52,
+          lineNumber: 83,
           columnNumber: 11
         }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(Footer, {
           children: "\xA9 2021 50625, Inc. All right reserved."
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 79,
+          lineNumber: 109,
           columnNumber: 11
         }, this)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 47,
+        lineNumber: 78,
         columnNumber: 9
       }, this)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 77,
       columnNumber: 7
     }, this);
   }
@@ -468,7 +495,7 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(Popup, {}, void 0, false, {
   fileName: _jsxFileName,
-  lineNumber: 87,
+  lineNumber: 117,
   columnNumber: 3
 }, undefined), document.getElementById("root"));
 

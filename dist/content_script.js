@@ -16,25 +16,96 @@ if (description && input && output) {
 
 }
 
-if (document.getElementById('problem-body')) {
-  problem_body = document.getElementById('problem-body').innerHTML;
-  document.getElementById('problem-body').innerHTML = `<div class="col-md-12">
-  <section id="description" class="problem-section">
-  <div class="headline">
-  <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">알고리즘</h2>
-  </div>
-  <div id="problem_description" class="problem-text">
-  <p>Mathematics</p>
-  </div>
-  </section>
-</div>` + problem_body;
-}
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {  
+	if (request.content && request.content === 'addAlgorithmDOM') {
+    if (document.getElementById('problem-body')) {
+      if (document.getElementById('algorithm')) {
+        console.log("Already updated");
+      } else {
+        const result = request.result;
+        let algorithm = "";
+        result.forEach((algo, i) => {
+          if (i === result.length - 1) {
+            algorithm += algo + "<br>"
+          } else {
+          algorithm += algo + ", "
+          }
+        });
+        problem_body = document.getElementById('problem-body').innerHTML;
+        document.getElementById('problem-body').innerHTML = `<div class="col-md-12" style="margin-bottom: 15px;">
+        <section id="algorithm" class="problem-section">
+        <div class="headline">
+        <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">추천 알고리즘</h2>
+        </div>
+        <div id="problem_algorithm" class="problem-text">
+        <p>`+ algorithm +`</p>
+        </div>
+        </section>
+        </div>` + problem_body;
+      }
+    }
 
-// chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {  
-// 	if(request.content && request.content === 'changeDOM') {
-//     let html_description = document.getElementById('problem_description')
-//     html_description.getElementsByTagName('p')[0].style.color = "red";
-// 		sendResponse({content: "changeDOM FINISHED!"});
-// 		return true; // This is required by a Chrome Extension
-// 	}
-// })
+		sendResponse({content: "addAlgorithmDOM FINISHED!"});
+		return true; // This is required by a Chrome Extension
+  }
+  if (request.content && request.content === 'addKeywordDOM') {
+    if (document.getElementById('problem_description')) {
+      const keyword_list = Object.keys(request.result.keyword_list);
+      keyword_list.forEach(keyword => {
+        console.log(keyword);
+        let keyword_obj = request.result.keyword_list[keyword]
+        const algorithm_list = Object.keys(keyword_obj);
+        let hover_content = ""
+        algorithm_list.forEach(algo => {
+          hover_content = `${algo}: ${keyword_obj[algo]}
+          `
+        })
+        request.result.highted_text = request.result.highted_text.replace(`${keyword}`, 
+            `<abbr title="${hover_content}">${keyword}</abbr>`
+        )
+        console.log(request.result.highted_text);
+      })
+      document.getElementById('problem_description').innerHTML = `<p>${request.result.highted_text}</p>`;
+    }
+
+		sendResponse({content: "addKeywordDOM FINISHED!"});
+		return true; // This is required by a Chrome Extension
+  }
+  if (request.content && request.content === 'addHighlightdDOM') {
+    if (document.getElementById('problem-body')) {
+      if (document.getElementById('highlight')) {
+        console.log("Already updated");
+      } else {
+        const result = request.result;
+        let sentences = "";
+        result.forEach(sen => { sentences += sen + `<br>` });
+        if (document.getElementById('algorithm')) {
+          document.getElementById('algorithm').innerHTML = document.getElementById('algorithm').innerHTML + 
+          `<section id="highlight" class="problem-section">
+          <div class="headline">
+          <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">하이라이팅</h2>
+          </div>
+          <div id="problem_highlight" class="problem-text">
+          <p>`+ sentences +`</p>
+          </div>
+          </section>`
+        } else {
+        problem_body = document.getElementById('problem-body').innerHTML;
+        document.getElementById('problem-body').innerHTML = `<div class="col-md-12">
+        <section id="highlight" class="problem-section">
+        <div class="headline">
+        <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">하이라이팅</h2>
+        </div>
+        <div id="problem_highlight" class="problem-text">
+        <p>`+ sentences +`</p>
+        </div>
+        </section>
+        </div>` + problem_body;
+      }
+    }
+
+		sendResponse({content: "addHighlightdDOM FINISHED!"});
+		return true; // This is required by a Chrome Extension
+    }
+  }
+})

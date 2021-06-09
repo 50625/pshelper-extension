@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import styled from 'styled-components';
-import Switch from "../common/components/switch";
 
 class Popup extends React.Component {
   constructor(props) {
@@ -10,54 +9,37 @@ class Popup extends React.Component {
     this.state = {
       algorithmIsToggled : false,
       highlightIsToggled : false,
-      keywordIsToggled : false,
+      keywordIsToggled : false
     };
+    this.handleAlgorithmIsToggled = this.handleAlgorithmIsToggled.bind(this);
+    this.handleHighLightIsToggled = this.handleHighLightIsToggled.bind(this);
+    this.handleKeywordIsToggled = this.handleKeywordIsToggled.bind(this);
   };
 
-  setIsToggled() {
-    this.setState((event) => {
-      chrome.extension.getBackgroundPage().console.log(event);
-      
-    });
-  }
-
-  // FIXME: state doesn't change
-
-  setAlgorithmIsToggled(flag) {
-    this.setState(() => {
-      if (flag) this.algorithmIsToggled = false;
-      else this.algorithmIsToggled = true;
-      chrome.extension.getBackgroundPage().console.log("setAlgorithmIsToggled");
-      chrome.extension.getBackgroundPage().console.log(this.state);
-    });
+  handleAlgorithmIsToggled() {
+    this.setState({ algorithmIsToggled: !this.state.algorithmIsToggled });
+    chrome.extension.getBackgroundPage().console.log("handleAlgorithmIsToggled");
     
     chrome.runtime.sendMessage({ action: "postAnalyzeAlgorithm"}, function(response) {
       chrome.extension.getBackgroundPage().console.log(response);
     });
   }
 
-  setHighLightIsToggled(flag) {
-    this.setState(() => {
-      if (flag) this.highlightIsToggled = false;
-      else this.highlightIsToggled = true;
-      chrome.extension.getBackgroundPage().console.log("setHighLightIsToggled");
-      chrome.extension.getBackgroundPage().console.log(this.state);
+  handleHighLightIsToggled() {
+    this.setState({ highlightIsToggled: !this.state.highlightIsToggled });
+    chrome.extension.getBackgroundPage().console.log("handleHighLightIsToggled");
 
-      chrome.runtime.sendMessage({ action: "postHighlight"}, function(response) {
-        chrome.extension.getBackgroundPage().console.log(response);
-      });
+    chrome.runtime.sendMessage({ action: "postHighlight"}, function(response) {
+      chrome.extension.getBackgroundPage().console.log(response);
     });
   }
 
-  setKeywordIsToggled(flag) {
-    this.setState(() => {
-      if (flag) this.coreIsToggled = false;
-      else this.coreIsToggled = true;
-      chrome.extension.getBackgroundPage().console.log("setKeywordIsToggled");
-      chrome.extension.getBackgroundPage().console.log(this.state);
-      chrome.runtime.sendMessage({ action: "postKeyword"}, function(response) {
-        chrome.extension.getBackgroundPage().console.log(response);
-      });
+  handleKeywordIsToggled() {
+    chrome.extension.getBackgroundPage().console.log("handleKeywordIsToggled");
+    this.setState({ keywordIsToggled: !this.state.keywordIsToggled });
+
+    chrome.runtime.sendMessage({ action: "postKeyword"}, function(response) {
+      chrome.extension.getBackgroundPage().console.log(response);
     });
   }
 
@@ -71,6 +53,49 @@ class Popup extends React.Component {
       text-align: center;
       font-size: 10px;
       maring-top: 10px;
+    `;
+    const CheckBoxWrapper = styled.div`
+      position: relative;
+      `;
+    const CheckBoxLabel = styled.label`
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 42px;
+      height: 26px;
+      border-radius: 15px;
+      background: #bebebe;
+      cursor: pointer;
+      &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        margin: 3px;
+        background: #ffffff;
+        box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+        transition: 0.2s;
+      }
+      `;
+    const CheckBox = styled.input`
+      opacity: 0;
+      z-index: 1;
+      border-radius: 15px;
+      width: 42px;
+      height: 26px;
+      &:checked + ${CheckBoxLabel} {
+        background: rgb(59, 96, 229);
+        &::after {
+          content: "";
+          display: block;
+          border-radius: 50%;
+          width: 18px;
+          height: 18px;
+          margin-left: 21px;
+          transition: 0.2s;
+        }
+      }
       `;
 
     return (
@@ -83,27 +108,31 @@ class Popup extends React.Component {
           <div className="Input">
             <div className="Swich-body">
               알고리즘 분류 확인
-              <Switch
-                id="var-switch"
-                toggled={this.state.algorithmIsToggled}
-                onChange={e => this.setAlgorithmIsToggled(this.state.algorithmIsToggled)}          
-              />
+              <CheckBoxWrapper>
+                <CheckBox id="algorithm" type="checkbox"
+                  checked={this.state.algorithmIsToggled}
+                  onChange={this.handleAlgorithmIsToggled} />
+                <CheckBoxLabel htmlFor="algorithm" />
+              </CheckBoxWrapper>
             </div>
             <div className="Swich-body">
               하이라이팅 기능
-              <Switch
-                id="hilight-switch"
-                toggled={this.state.highlightIsToggled}
-                onChange={e => this.setHighLightIsToggled(this.state.highlightIsToggled)}          
-              />
+              <CheckBoxWrapper>
+                <CheckBox id="highlight" type="checkbox" 
+                  checked={this.state.highlightIsToggled}
+                  onChange={this.handleHighLightIsToggled} />
+                <CheckBoxLabel htmlFor="highlight" />
+              </CheckBoxWrapper>
             </div>
             <div className="Swich-body">
               핵심 단어 체크 기능
-              <Switch
-                id="core-switch"
-                toggled={this.state.keywordIsToggled}
-                onChange={e => this.setKeywordIsToggled(this.state.keywordIsToggled)}          
-              />
+              <CheckBoxWrapper>
+                <CheckBox id="keyword" type="checkbox" 
+                  checked={this.state.keywordIsToggled}
+                  onChange={this.handleKeywordIsToggled}
+                  />
+                <CheckBoxLabel htmlFor="keyword" />
+              </CheckBoxWrapper>
             </div>
           </div>
           <Footer>© 2021 50625, Inc. All right reserved.</Footer>

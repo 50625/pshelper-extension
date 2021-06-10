@@ -116,7 +116,7 @@ class Popup extends React.Component {
               </CheckBoxWrapper>
             </div>
             <div className="Swich-body">
-              하이라이팅 기능
+              접속사, 문장 구분 기능
               <CheckBoxWrapper>
                 <CheckBox id="highlight" type="checkbox" 
                   checked={this.state.highlightIsToggled}

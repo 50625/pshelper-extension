@@ -22,13 +22,14 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
       if (document.getElementById('algorithm')) {
         console.log("Already updated");
       } else {
-        const result = request.result;
+        console.log("addAlgorithmDOM");
+        const result = Object.keys(request.result);
         let algorithm = "";
         result.forEach((algo, i) => {
           if (i === result.length - 1) {
-            algorithm += algo + "<br>"
+            algorithm += `${algo} : ${request.result[algo]} <br>`
           } else {
-          algorithm += algo + ", "
+          algorithm += `${algo} : ${request.result[algo]}, `
           }
         });
         problem_body = document.getElementById('problem-body').innerHTML;
@@ -52,7 +53,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     if (document.getElementById('problem_description')) {
       const keyword_list = Object.keys(request.result.keyword_list);
       keyword_list.forEach(keyword => {
-        console.log(keyword);
         let keyword_obj = request.result.keyword_list[keyword]
         const algorithm_list = Object.keys(keyword_obj);
         let hover_content = ""
@@ -60,12 +60,12 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
           hover_content = `${algo}: ${keyword_obj[algo]}
           `
         })
-        request.result.highted_text = request.result.highted_text.replace(`${keyword}`, 
+        
+        request.result.highlighted_text = request.result.highlighted_text.replace(`${keyword}`, 
             `<abbr title="${hover_content}">${keyword}</abbr>`
-        )
-        console.log(request.result.highted_text);
-      })
-      document.getElementById('problem_description').innerHTML = `<p>${request.result.highted_text}</p>`;
+        );
+      });
+      document.getElementById('problem_description').innerHTML = `<p>${request.result.highlighted_text}</p>`;
     }
 
 		sendResponse({content: "addKeywordDOM FINISHED!"});
@@ -83,7 +83,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
           document.getElementById('algorithm').innerHTML = document.getElementById('algorithm').innerHTML + 
           `<section id="highlight" class="problem-section">
           <div class="headline">
-          <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">하이라이팅</h2>
+          <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">접속사, 문장 구분</h2>
           </div>
           <div id="problem_highlight" class="problem-text">
           <p>`+ sentences +`</p>
@@ -94,7 +94,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
         document.getElementById('problem-body').innerHTML = `<div class="col-md-12">
         <section id="highlight" class="problem-section">
         <div class="headline">
-        <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">하이라이팅</h2>
+        <h2 style="border-bottom: 2px solid rgb(218,71,103) !important;">접속사, 문장 구분</h2>
         </div>
         <div id="problem_highlight" class="problem-text">
         <p>`+ sentences +`</p>

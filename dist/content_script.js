@@ -4,6 +4,7 @@ let description = null;
 let input = null;
 let output = null;
 let problem_body = null;
+let origin_problem_body = null;
 
 if (document.getElementById('problem_description')) description = document.getElementById('problem_description').innerText;
 if (document.getElementById('problem_input')) input = document.getElementById('problem_input').innerText;
@@ -51,6 +52,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
   }
   if (request.content && request.content === 'addKeywordDOM') {
     if (document.getElementById('problem_description')) {
+      origin_problem_body = document.getElementById('problem_description');
       const keyword_list = Object.keys(request.result.keyword_list);
       keyword_list.forEach(keyword => {
         let keyword_obj = request.result.keyword_list[keyword]
@@ -106,6 +108,37 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
 		sendResponse({content: "addHighlightdDOM FINISHED!"});
 		return true; // This is required by a Chrome Extension
+    }
+  }
+
+
+  if (request.content && request.content === 'turnOffAnalyzeAlgorithm') {
+    if (document.getElementById('problem-body')) {
+      if (document.getElementById('algorithm')) {
+        document.getElementById('problem-body').innerHTML = document.getElementById('problem-body').innerHTML.replace(document.getElementById('algorithm').innerHTML, "");
+        sendResponse({content: "turnOffAnalyzeAlgorithm FINISHED!"});
+        return true; // This is required by a Chrome Extension
+      }
+    }
+  }
+
+  if (request.content && request.content === 'turnOffHighlight') {
+    if (document.getElementById('problem-body')) {
+      if (document.getElementById('highlight')) {
+        document.getElementById('problem-body').innerHTML = document.getElementById('problem-body').innerHTML.replace(document.getElementById('highlight').innerHTML, "");
+        sendResponse({content: "turnOffHighlight FINISHED!"});
+        return true; // This is required by a Chrome Extension
+      }
+    }
+  }
+
+  if (request.content && request.content === 'turnOffKeyword') {
+    if (document.getElementById('problem-body')) {
+      if (origin_problem_body) {
+        document.getElementById('problem-body').innerHTML = origin_problem_body;
+        sendResponse({content: "turnOffKeyword FINISHED!"});
+        return true; // This is required by a Chrome Extension
+      }
     }
   }
 })

@@ -75,6 +75,36 @@ function postKeyword(prameter) {
   req.send(urlParams);
 }
 
+function turnOffAnalyzeAlgorithm() {
+  chrome.tabs.query({active: true, currentWindow: true},function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {content: "turnOffAnalyzeAlgorithm"}, function(response) {
+      if(response) {
+        console.log(response);
+      }
+    });
+  });
+}
+
+function turnOffHighlight() {
+  chrome.tabs.query({active: true, currentWindow: true},function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {content: "turnOffHighlight"}, function(response) {
+      if(response) {
+        console.log(response);
+      }
+    });
+  });
+}
+
+function turnOffKeyword() {
+  chrome.tabs.query({active: true, currentWindow: true},function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {content: "turnOffKeyword"}, function(response) {
+      if(response) {
+        console.log(response);
+      }
+    });
+  });
+}
+
 /*global chrome*/
 
 chrome.runtime.onInstalled.addListener(function(details){
@@ -91,7 +121,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       input = request.object.input;
       sendResponse({message: "getDOM FINISHED"});
     }
+  });
+});
 
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === "postAnalyzeAlgorithm") {
       if (problem_id && content && input) {
         postAnalyzeAlgorithm({problem_id, content, input});
@@ -112,6 +145,20 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         sendResponse({message: "postKeyword STARTED"});
       }
     }
-  });
+
+    if (request.action === "turnOffAnalyzeAlgorithm") {
+      turnOffAnalyzeAlgorithm();
+      sendResponse({message: "turnOffAnalyzeAlgorithm STARTED"});
+    }
+
+    if (request.action === "turnOffHighlight") {
+      turnOffHighlight();
+      sendResponse({message: "turnOffHighlight STARTED"});
+    }
+
+    if (request.action === "turnOffKeyword") {
+      turnOffKeyword();
+      sendResponse({message: "turnOffKeyword STARTED"});
+    }
 });
 

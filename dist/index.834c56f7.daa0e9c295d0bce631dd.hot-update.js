@@ -1,118 +1,4 @@
-(this["webpackJsonppshelper-extension"] = this["webpackJsonppshelper-extension"] || []).push([["index.834c56f7"],{
-
-/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/popup/index.css":
-/*!********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-oneOf-4-1!./node_modules/postcss-loader/src??postcss!./src/popup/index.css ***!
-  \********************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
-// Module
-___CSS_LOADER_EXPORT___.push([module.i, ".Popup {\n  text-align: center;\n}\n\n.Popup-body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  width: 350px;\n}\n\n.App-logo {\n  margin: 10px 0;\n  pointer-events: none;\n  \n}\n\n.Logo {\n  font-family: 'Didact Gothic', sans-serif;\n  font-size: 28px;\n}\n\n.Logo-sub {\n  text-align: right !important;\n  color: rgb(59,96,229);    \n  margin-top: -7px;\n  font-family: 'Didact Gothic', sans-serif;\n  font-size: smaller;\n}\n\n.Discription {\n  font-family: 'Didact Gothic', sans-serif;\n  margin: 5px 0 100px 0;\n  width: 300px;\n}\n\n.Discription-title {\n  font-size: 20px;\n  font-weight: 700;\n  margin-bottom: 10px;\n}\n\n.Discription-sub {\n  text-align: left;\n  color: rgb(124, 127, 146);\n}\n\n.Swich-body {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  font-family: 'Didact Gothic', sans-serif;\n  font-size: 16px;\n  margin: 15px 0;\n}\n\n.Input {\n  width: 240px;\n  margin: 20px 0;\n}", "",{"version":3,"sources":["webpack://src/popup/index.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;AACpB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,YAAY;AACd;;AAEA;EACE,cAAc;EACd,oBAAoB;;AAEtB;;AAEA;EACE,wCAAwC;EACxC,eAAe;AACjB;;AAEA;EACE,4BAA4B;EAC5B,qBAAqB;EACrB,gBAAgB;EAChB,wCAAwC;EACxC,kBAAkB;AACpB;;AAEA;EACE,wCAAwC;EACxC,qBAAqB;EACrB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;EAChB,yBAAyB;AAC3B;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,wCAAwC;EACxC,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,YAAY;EACZ,cAAc;AAChB","sourcesContent":[".Popup {\n  text-align: center;\n}\n\n.Popup-body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  width: 350px;\n}\n\n.App-logo {\n  margin: 10px 0;\n  pointer-events: none;\n  \n}\n\n.Logo {\n  font-family: 'Didact Gothic', sans-serif;\n  font-size: 28px;\n}\n\n.Logo-sub {\n  text-align: right !important;\n  color: rgb(59,96,229);    \n  margin-top: -7px;\n  font-family: 'Didact Gothic', sans-serif;\n  font-size: smaller;\n}\n\n.Discription {\n  font-family: 'Didact Gothic', sans-serif;\n  margin: 5px 0 100px 0;\n  width: 300px;\n}\n\n.Discription-title {\n  font-size: 20px;\n  font-weight: 700;\n  margin-bottom: 10px;\n}\n\n.Discription-sub {\n  text-align: left;\n  color: rgb(124, 127, 146);\n}\n\n.Swich-body {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  font-family: 'Didact Gothic', sans-serif;\n  font-size: 16px;\n  margin: 15px 0;\n}\n\n.Input {\n  width: 240px;\n  margin: 20px 0;\n}"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./src/popup/index.css":
-/*!*****************************!*\
-  !*** ./src/popup/index.css ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-4-1!../../node_modules/postcss-loader/src??postcss!./index.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/popup/index.css");
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.i, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = api(content, options);
-
-
-if (true) {
-  if (!content.locals || module.hot.invalidate) {
-    var isEqualLocals = function isEqualLocals(a, b, isNamedExport) {
-  if (!a && b || a && !b) {
-    return false;
-  }
-
-  var p;
-
-  for (p in a) {
-    if (isNamedExport && p === 'default') {
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-
-    if (a[p] !== b[p]) {
-      return false;
-    }
-  }
-
-  for (p in b) {
-    if (isNamedExport && p === 'default') {
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-
-    if (!a[p]) {
-      return false;
-    }
-  }
-
-  return true;
-};
-    var oldLocals = content.locals;
-
-    module.hot.accept(
-      /*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-4-1!../../node_modules/postcss-loader/src??postcss!./index.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/popup/index.css",
-      function () {
-        content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-oneOf-4-1!../../node_modules/postcss-loader/src??postcss!./index.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/popup/index.css");
-
-              content = content.__esModule ? content.default : content;
-
-              if (typeof content === 'string') {
-                content = [[module.i, content, '']];
-              }
-
-              if (!isEqualLocals(oldLocals, content.locals)) {
-                module.hot.invalidate();
-
-                return;
-              }
-
-              oldLocals = content.locals;
-
-              update(content);
-      }
-    )
-  }
-
-  module.hot.dispose(function() {
-    update();
-  });
-}
-
-module.exports = content.locals || {};
-
-/***/ }),
+webpackHotUpdate("index.834c56f7",{
 
 /***/ "./src/popup/index.js":
 /*!****************************!*\
@@ -172,6 +58,7 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     }
 
+    window.localStorage.setItem("state", this.state);
     this.setState({
       algorithmIsToggled: !this.state.algorithmIsToggled
     });
@@ -285,19 +172,19 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
             children: "PSHELPER"
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 128,
+            lineNumber: 129,
             columnNumber: 13
           }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
             className: "Logo-sub",
             children: "2021"
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 129,
+            lineNumber: 130,
             columnNumber: 13
           }, this)]
         }, void 0, true, {
           fileName: _jsxFileName,
-          lineNumber: 127,
+          lineNumber: 128,
           columnNumber: 11
         }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
           className: "Input",
@@ -311,23 +198,23 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
                 onChange: this.handleAlgorithmIsToggled
               }, void 0, false, {
                 fileName: _jsxFileName,
-                lineNumber: 135,
+                lineNumber: 136,
                 columnNumber: 17
               }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(CheckBoxLabel, {
                 htmlFor: "algorithm"
               }, void 0, false, {
                 fileName: _jsxFileName,
-                lineNumber: 138,
+                lineNumber: 139,
                 columnNumber: 17
               }, this)]
             }, void 0, true, {
               fileName: _jsxFileName,
-              lineNumber: 134,
+              lineNumber: 135,
               columnNumber: 15
             }, this)]
           }, void 0, true, {
             fileName: _jsxFileName,
-            lineNumber: 132,
+            lineNumber: 133,
             columnNumber: 13
           }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
             className: "Swich-body",
@@ -339,23 +226,23 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
                 onChange: this.handleHighLightIsToggled
               }, void 0, false, {
                 fileName: _jsxFileName,
-                lineNumber: 144,
+                lineNumber: 145,
                 columnNumber: 17
               }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(CheckBoxLabel, {
                 htmlFor: "highlight"
               }, void 0, false, {
                 fileName: _jsxFileName,
-                lineNumber: 147,
+                lineNumber: 148,
                 columnNumber: 17
               }, this)]
             }, void 0, true, {
               fileName: _jsxFileName,
-              lineNumber: 143,
+              lineNumber: 144,
               columnNumber: 15
             }, this)]
           }, void 0, true, {
             fileName: _jsxFileName,
-            lineNumber: 141,
+            lineNumber: 142,
             columnNumber: 13
           }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
             className: "Swich-body",
@@ -367,44 +254,44 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
                 onChange: this.handleKeywordIsToggled
               }, void 0, false, {
                 fileName: _jsxFileName,
-                lineNumber: 153,
+                lineNumber: 154,
                 columnNumber: 17
               }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(CheckBoxLabel, {
                 htmlFor: "keyword"
               }, void 0, false, {
                 fileName: _jsxFileName,
-                lineNumber: 157,
+                lineNumber: 158,
                 columnNumber: 17
               }, this)]
             }, void 0, true, {
               fileName: _jsxFileName,
-              lineNumber: 152,
+              lineNumber: 153,
               columnNumber: 15
             }, this)]
           }, void 0, true, {
             fileName: _jsxFileName,
-            lineNumber: 150,
+            lineNumber: 151,
             columnNumber: 13
           }, this)]
         }, void 0, true, {
           fileName: _jsxFileName,
-          lineNumber: 131,
+          lineNumber: 132,
           columnNumber: 11
         }, this), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(Footer, {
           children: "\xA9 2021 50625, Inc. All right reserved."
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 161,
+          lineNumber: 162,
           columnNumber: 11
         }, this)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 126,
+        lineNumber: 127,
         columnNumber: 9
       }, this)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 125,
+      lineNumber: 126,
       columnNumber: 7
     }, this);
   }
@@ -413,7 +300,7 @@ class Popup extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(Popup, {}, void 0, false, {
   fileName: _jsxFileName,
-  lineNumber: 169,
+  lineNumber: 170,
   columnNumber: 3
 }, undefined), document.getElementById("root"));
 
@@ -492,22 +379,7 @@ if (true) {
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js"), __webpack_require__(/*! ./node_modules/react-dev-utils/refreshOverlayInterop.js */ "./node_modules/react-dev-utils/refreshOverlayInterop.js")))
 
-/***/ }),
-
-/***/ 4:
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** multi (webpack)/hot/dev-server.js ./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js ./node_modules/react-dev-utils/webpackHotDevClient.js ./src/popup/index.js ***!
-  \****************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! /Users/myungyeonlee/pshelper-extension/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-__webpack_require__(/*! /Users/myungyeonlee/pshelper-extension/node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js */"./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js");
-__webpack_require__(/*! /Users/myungyeonlee/pshelper-extension/node_modules/react-dev-utils/webpackHotDevClient.js */"./node_modules/react-dev-utils/webpackHotDevClient.js");
-module.exports = __webpack_require__(/*! /Users/myungyeonlee/pshelper-extension/src/popup/index.js */"./src/popup/index.js");
-
-
 /***/ })
 
-},[[4,"runtime-index.834c56f7","vendors~index.834c56f7~index.f0929f11~main","vendors~index.834c56f7~index.f0929f11","vendors~index.834c56f7"]]]);
-//# sourceMappingURL=index.834c56f7.chunk.js.map
+})
+//# sourceMappingURL=index.834c56f7.daa0e9c295d0bce631dd.hot-update.js.map

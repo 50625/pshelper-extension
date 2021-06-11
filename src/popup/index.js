@@ -17,35 +17,58 @@ class Popup extends React.Component {
   };
 
   handleAlgorithmIsToggled() {
-    this.setState({ algorithmIsToggled: !this.state.algorithmIsToggled });
     chrome.extension.getBackgroundPage().console.log("handleAlgorithmIsToggled");
     
-    chrome.runtime.sendMessage({ action: "postAnalyzeAlgorithm"}, function(response) {
-      chrome.extension.getBackgroundPage().console.log(response);
-    });
+    if (!this.state.algorithmIsToggled) {
+      chrome.runtime.sendMessage({ action: "postAnalyzeAlgorithm"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    } 
+    else {
+      chrome.runtime.sendMessage({ action: "turnOffAnalyzeAlgorithm"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    }
+
+    this.setState({ algorithmIsToggled: !this.state.algorithmIsToggled });
   }
 
   handleHighLightIsToggled() {
-    this.setState({ highlightIsToggled: !this.state.highlightIsToggled });
     chrome.extension.getBackgroundPage().console.log("handleHighLightIsToggled");
 
-    chrome.runtime.sendMessage({ action: "postHighlight"}, function(response) {
-      chrome.extension.getBackgroundPage().console.log(response);
-    });
+    if (!this.state.highlightIsToggled) {
+      chrome.runtime.sendMessage({ action: "postHighlight"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    } 
+    else {
+      chrome.runtime.sendMessage({ action: "turnOffHighlight"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    }
+    this.setState({ highlightIsToggled: !this.state.highlightIsToggled });
   }
 
   handleKeywordIsToggled() {
     chrome.extension.getBackgroundPage().console.log("handleKeywordIsToggled");
-    this.setState({ keywordIsToggled: !this.state.keywordIsToggled });
 
-    chrome.runtime.sendMessage({ action: "postKeyword"}, function(response) {
-      chrome.extension.getBackgroundPage().console.log(response);
-    });
+    if (!this.state.keywordIsToggled) {
+      chrome.runtime.sendMessage({ action: "postKeyword"}, function(response) {
+        chrome.extension.getBackgroundPage().console.log(response);
+      });
+    } 
+    // else {
+    //   chrome.runtime.sendMessage({ action: "turnOffKeyword"}, function(response) {
+    //     chrome.extension.getBackgroundPage().console.log(response);
+    //   });
+    // }
+    this.setState({ keywordIsToggled: !this.state.keywordIsToggled });
   }
 
   componentDidMount() {
     /*global chrome*/
   }
+
 
   render() {
     const Footer = styled.footer`
